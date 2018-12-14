@@ -11,3 +11,7 @@ Uses forked versions of both, with tweaks such as
 # Usage
 
 `docker run -e AWS_ACCESS_KEY_ID=xxxx -e AWS_SECRET_ACCESS_KEY=yyy -e AWS_REGION=ap-southeast-1 --rm -p 3030:3030 rdkls/aws-dashing`
+
+## For ARM architectures
+
+`docker run -e AWS_ACCESS_KEY_ID=xxxx -e AWS_SECRET_ACCESS_KEY=yyy -e AWS_REGION=ap-southeast-1 --rm -p 3030:3030 rdkls/aws-dashing:arm`
