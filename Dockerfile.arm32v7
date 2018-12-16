@@ -1,4 +1,4 @@
-FROM arm32v7/node:11.4.0-stretch-slim
+FROM resin/rpi-raspbian:stretch
 EXPOSE 3030
 RUN apt-get update
 RUN apt-get install -y  git python make g++
