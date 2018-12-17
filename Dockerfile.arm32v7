@@ -1,10 +1,24 @@
 FROM resin/rpi-raspbian:stretch
 EXPOSE 3030
+ARG NODE_VERSION=v10.14.2
+
 RUN apt-get update
-RUN apt-get install -y  git python make g++
+RUN apt-get install -y wget git python make g++
+
+# node
+WORKDIR /opt
+RUN wget https://nodejs.org/dist/${NODE_VERSION}/node-${NODE_VERSION}-linux-armv6l.tar.xz
+RUN tar -xvf node-${NODE_VERSION}-linux-armv6l.tar.xz
+RUN mv node-${NODE_VERSION}-linux-armv6l node
+ENV PATH "$PATH:/opt/node/bin"
+RUN echo 'export PATH=$PATH:/opt/node/bin' >> ~/.bashrc
+
+# aws-dashing
 RUN git clone https://github.com/rdkls/aws-dashing.git /opt/aws-dashing
 RUN mkdir -p /opt/aws-dashing/lib
 WORKDIR /opt/aws-dashing
 COPY config.js .
-RUN npm install
+# --unsafe-perm needed for jade install ... see https://github.com/sass/node-sass/issues/2216
+RUN npm install --unsafe-perm
+
 ENTRYPOINT ["node", "server.js"]
