@@ -14,7 +14,7 @@ ENV PATH "$PATH:/opt/node/bin"
 RUN echo 'export PATH=$PATH:/opt/node/bin' >> ~/.bashrc
 
 # aws-dashing
-RUN git clone https://github.com/rdkls/aws-dashing.git /opt/aws-dashing
+RUN git clone https://github.com/intelematics/aws-dashing.git /opt/aws-dashing
 RUN mkdir -p /opt/aws-dashing/lib
 WORKDIR /opt/aws-dashing
 COPY config.js .
