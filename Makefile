@@ -4,4 +4,4 @@ image:
 
 arm:
 	#docker build -t aws_dashing .
-	docker build --file Dockerfile.arm32v7 --no-cache -t aws-dashing:arm32v7 .
+	docker build --file Dockerfile.arm32v7 --no-cache -t aws-dashing:arm32v7 -t rdkls/aws-dashing:arm32v7 .
